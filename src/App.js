@@ -7,7 +7,7 @@ import Caption from "./components/Caption";
 import Date from "./components/Date";
 import Header from "./components/Header";
 import Headline from "./components/Headline";
-import Image from "./components/Image";
+import ImageBordered from "./components/ImageBordered";
 import Video from "./components/Video";
 
 // import stylesheet
@@ -32,7 +32,7 @@ function App() {
       <Headline headline={media.title} />
       <Date date={media.date} />
       {media.media_type !== "video" ? (
-        <Image img={media.url} title={media.title} />
+        <ImageBordered img={media.url} title={media.title} />
       ) : (
         <Video video={media.url} title={media.title} />
       )}
