@@ -3,13 +3,15 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 // import components
-import "./components/Caption";
-import "./components/Date";
-import "./components/Headline";
-import "./components/Image";
+import Caption from "./components/Caption";
+import Date from "./components/Date";
+import Header from "./components/Header";
+import Headline from "./components/Headline";
+import Image from "./components/Image";
+import Video from "./components/Video";
 
 // import stylesheet
-import "./index.scss";
+import "./stylesheets/main.scss";
 
 function App() {
   const [media, setMedia] = useState([]);
@@ -26,8 +28,15 @@ function App() {
   console.log(media);
   return (
     <div className="App">
-      <p>NASA Images</p>
-      {/* <Headline headline={media.data.title} /> */}
+      <Header />
+      <Headline headline={media.title} />
+      <Date date={media.date} />
+      {media.media_type !== "video" ? (
+        <Image img={media.url} title={media.title} />
+      ) : (
+        <Video video={media.url} title={media.title} />
+      )}
+      <Caption caption={media.explanation} />
     </div>
   );
 }
